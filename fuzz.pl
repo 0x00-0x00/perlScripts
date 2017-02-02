@@ -28,6 +28,10 @@ print "[-] Type the target port: ";
 my $port = <STDIN>;
 chomp $port;
 
+print "[-] Type maximum payload size in bytes: ";
+my $payload_size = <STDIN>;
+chomp $payload_size;
+
 print "[-] Type how many iterations of fuzzing do you wish to do: ";
 my $input = <STDIN>;
 chomp $input;
@@ -59,7 +63,7 @@ for(my $i = 0; $i < int($input); $i++) {
         exit;
     }
 
-    my $bufflen = rand(4096);
+    my $bufflen = rand($payload_size);
     my $blob_size = $bufflen;
     read(RAND, $randSeed, 4);
     my $buffer = generateJunk($bufflen, $randSeed);
