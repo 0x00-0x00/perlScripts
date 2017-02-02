@@ -38,16 +38,6 @@ chomp $interval;
 
 print "\n[*] Fuzzing session with $input cycles set to destination $server:$port\n";
 
-# Create a socket
-my $socks = IO::Socket::INET->new(
-        Proto=> "tcp",
-        PeerAddr=> $server,
-        PeerPort=> $port,
-        TimeOut=>5,
-        Reuse=>1   
-);
-
-
 my $seed;
 my $randSeed;
 open(RAND, "/dev/urandom");
